@@ -12,6 +12,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // MARK: - UIWindowSceneDelegate
     
     var window: UIWindow?
+    var rootCoordinator: RootCoordinator?
 
     func scene(
         _ scene: UIScene,
@@ -22,8 +23,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        window.rootViewController = UIViewController()
-        window.makeKeyAndVisible()
+        rootCoordinator = RootCoordinator(window: window)
+        rootCoordinator?.start()
         
         self.window = window
     }
