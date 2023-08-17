@@ -10,6 +10,7 @@
 		FC67C2F22A8E5C3D00FFC53C /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */; };
 		FC67C2F42A8E5D5400FFC53C /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */; };
 		FC67C2F62A8E5E3C00FFC53C /* HTTPProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */; };
+		FC67C2F82A8E5F2800FFC53C /* URLSessionHTTPProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F72A8E5F2800FFC53C /* URLSessionHTTPProvider.swift */; };
 		FCA34DFA2A8E59A3002FBE37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA34DF92A8E59A3002FBE37 /* AppDelegate.swift */; };
 		FCA34DFC2A8E59A3002FBE37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA34DFB2A8E59A3002FBE37 /* SceneDelegate.swift */; };
 		FCA34DFE2A8E59A3002FBE37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA34DFD2A8E59A3002FBE37 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 		FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
 		FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPProvider.swift; sourceTree = "<group>"; };
+		FC67C2F72A8E5F2800FFC53C /* URLSessionHTTPProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPProvider.swift; sourceTree = "<group>"; };
 		FCA34DF62A8E59A3002FBE37 /* HungrySwiss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HungrySwiss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA34DF92A8E59A3002FBE37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCA34DFB2A8E59A3002FBE37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,9 +97,18 @@
 			children = (
 				FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */,
 				FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */,
-				FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */,
+				FC67C2F92A8E5F3A00FFC53C /* HTTPProvider */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		FC67C2F92A8E5F3A00FFC53C /* HTTPProvider */ = {
+			isa = PBXGroup;
+			children = (
+				FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */,
+				FC67C2F72A8E5F2800FFC53C /* URLSessionHTTPProvider.swift */,
+			);
+			path = HTTPProvider;
 			sourceTree = "<group>";
 		};
 		FCA34DED2A8E59A3002FBE37 = {
@@ -287,6 +298,7 @@
 				FCA34DFE2A8E59A3002FBE37 /* ViewController.swift in Sources */,
 				FC67C2F22A8E5C3D00FFC53C /* HTTPRequest.swift in Sources */,
 				FC67C2F42A8E5D5400FFC53C /* HTTPResponse.swift in Sources */,
+				FC67C2F82A8E5F2800FFC53C /* URLSessionHTTPProvider.swift in Sources */,
 				FCA34DFA2A8E59A3002FBE37 /* AppDelegate.swift in Sources */,
 				FCA34DFC2A8E59A3002FBE37 /* SceneDelegate.swift in Sources */,
 			);

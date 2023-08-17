@@ -14,5 +14,5 @@ enum HTTPMethod: String {
 protocol HTTPRequest {
     var method: HTTPMethod { get }
     var path: String { get }
-    var queryParameters: [String: Any] { get }
+    var queryParameters: [String: String] { get }
 }
