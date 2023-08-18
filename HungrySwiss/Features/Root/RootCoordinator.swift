@@ -32,7 +32,7 @@ struct RootCoordinator {
     private func stylizeTabBar(_ tabBar: UITabBar) {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .lightGray
+        appearance.backgroundColor = .gray2
         
         setTabBarItemColors(appearance.stackedLayoutAppearance)
         setTabBarItemColors(appearance.compactInlineLayoutAppearance)
@@ -42,11 +42,11 @@ struct RootCoordinator {
     }
     
     private func setTabBarItemColors(_ itemAppearance: UITabBarItemAppearance) {
-        itemAppearance.normal.iconColor = .gray
-        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.gray]
+        itemAppearance.normal.iconColor = .gray1
+        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.gray1]
         
-        itemAppearance.selected.iconColor = .red
-        itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+        itemAppearance.selected.iconColor = .red1
+        itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red1]
     }
     
     private func makeCityListViewController() -> UIViewController {
