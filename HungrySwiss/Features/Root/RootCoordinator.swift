@@ -72,7 +72,7 @@ struct RootCoordinator {
     }
     
     private func makeAccountViewController() -> UIViewController {
-        let controller = UINavigationController(rootViewController: AccountViewController())
+        let controller = AccountViewController()
         controller.tabBarItem = UITabBarItem(
             title: "Account",
             image: UIImage(named: "tab-account"),
