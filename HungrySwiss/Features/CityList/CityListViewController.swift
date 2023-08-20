@@ -14,8 +14,9 @@ final class CityListViewController: UIViewController {
     
     private let headerView = UIView()
     
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: generateCollectionViewLayout())
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: CityListCollectionViewLayout())
     private let collectionViewDataSource = CityListCollectionviewDataSource()
+    private let collectionViewDelegate = CityListCollectionViewDelegate()
     
     // MARK: - Private Properties
     
@@ -96,11 +97,19 @@ final class CityListViewController: UIViewController {
     private func configureCollectionView() {
         collectionView.register(CityListAddressPickerCollectionViewCell.self, forCellWithReuseIdentifier: CityListAddressPickerCollectionViewCell.reuseIdentifer)
         collectionView.register(CityListCityCollectionViewCell.self, forCellWithReuseIdentifier: CityListCityCollectionViewCell.reuseIdentifer)
+        collectionView.register(CityListAdsCollectionViewCell.self, forCellWithReuseIdentifier: CityListAdsCollectionViewCell.reuseIdentifer)
+        
         collectionView.dataSource = collectionViewDataSource
         
         collectionViewDataSource.sections = [
             .init(items: [.addressPicker], sectionType: .addressPicker),
+            .init(items: [.ads], sectionType: .ads),
         ]
+        
+        collectionView.delegate = collectionViewDelegate
+        collectionViewDelegate.didSelectCity = { [weak self] cityID in
+            self?.viewModel.navigateToCityRestaurant(cityID: cityID)
+        }
         
         collectionView.reloadData()
         
@@ -114,65 +123,13 @@ final class CityListViewController: UIViewController {
         ])
     }
     
-    private func generateCollectionViewLayout() -> UICollectionViewCompositionalLayout {
-        UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            
-            let sectionLayoutKind = CityListViewModel.SectionType.allCases[sectionIndex]
-            switch sectionLayoutKind {
-            case .addressPicker: return self.generateAddressPickerLayout()
-            case .nearbyCities: return self.generateCitiesLayout()
-            case .ads: fatalError()
-            }
-        }
-    }
-    
-    private func generateAddressPickerLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalWidth(1/4)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(1/4)
-        )
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 1)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        
-        return section
-    }
-    
-    private func generateCitiesLayout() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(2/3))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.475),
-            heightDimension: .fractionalWidth(1/3)
-        )
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 1)
-        group.contentInsets = NSDirectionalEdgeInsets(
-            top: 5,
-            leading: 5,
-            bottom: 5,
-            trailing: 5)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        
-        return section
-    }
-    
     // MARK: - Private Methods
     
     private func bindViewModel() {
         viewModel.$sections
             .sink { [weak self] sections in
                 self?.collectionViewDataSource.sections = sections
+                self?.collectionViewDelegate.sections = sections
                 self?.collectionView.reloadData()
             }
             .store(in: &subscriptions)

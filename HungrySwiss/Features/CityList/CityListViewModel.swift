@@ -50,7 +50,8 @@ final class CityListViewModel {
                 await MainActor.run {
                     self.sections = [
                         .init(items: [.addressPicker], sectionType: .addressPicker),
-                        .init(items: cities.map(Item.city), sectionType: .nearbyCities)
+                        .init(items: cities.map(Item.city), sectionType: .nearbyCities),
+                        .init(items: [.ads], sectionType: .ads),
                     ]
                 }
             } catch {
@@ -58,6 +59,10 @@ final class CityListViewModel {
             }
             
         }
+    }
+    
+    func navigateToCityRestaurant(cityID: String) {
+        print(cityID)
     }
     
 }

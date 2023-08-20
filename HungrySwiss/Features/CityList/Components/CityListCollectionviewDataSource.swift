@@ -42,7 +42,10 @@ final class CityListCollectionviewDataSource: NSObject, UICollectionViewDataSour
             
             return cell
         case .ads:
-            return UICollectionViewCell()
+            return collectionView.dequeueReusableCell(
+                withReuseIdentifier: CityListAdsCollectionViewCell.reuseIdentifer,
+                for: indexPath
+            )
         }
     }
     
