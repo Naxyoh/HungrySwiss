@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class CityListViewController: UIViewController {
     
@@ -16,6 +17,24 @@ final class CityListViewController: UIViewController {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: generateCollectionViewLayout())
     private let collectionViewDataSource = CityListCollectionviewDataSource()
     
+    // MARK: - Private Properties
+    
+    private let viewModel: CityListViewModel
+    
+    private var subscriptions = Set<AnyCancellable>()
+    
+    // MARK: - Initialization Methods
+    
+    init(viewModel: CityListViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
@@ -23,8 +42,9 @@ final class CityListViewController: UIViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         configureView()
+        bindViewModel()
         
-        view.backgroundColor = .systemPink
+        viewModel.fetchCities()
     }
     
     // MARK: - View Configuration
@@ -44,7 +64,6 @@ final class CityListViewController: UIViewController {
             headerView.topAnchor.constraint(equalTo: view.topAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
-
         
         let titleLabel = UILabel()
         titleLabel.text = "Dein Deal\nRestaurant"
@@ -76,10 +95,11 @@ final class CityListViewController: UIViewController {
     
     private func configureCollectionView() {
         collectionView.register(CityListAddressPickerCollectionViewCell.self, forCellWithReuseIdentifier: CityListAddressPickerCollectionViewCell.reuseIdentifer)
+        collectionView.register(CityListCityCollectionViewCell.self, forCellWithReuseIdentifier: CityListCityCollectionViewCell.reuseIdentifer)
         collectionView.dataSource = collectionViewDataSource
         
         collectionViewDataSource.sections = [
-            .init(items: [.addressPicker]),
+            .init(items: [.addressPicker], sectionType: .addressPicker),
         ]
         
         collectionView.reloadData()
@@ -97,14 +117,12 @@ final class CityListViewController: UIViewController {
     private func generateCollectionViewLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             
-            return self.generateAddressPickerLayout()
-            
-//            let sectionLayoutKind = CityListViewModel.Section.allCases[sectionIndex]
-//            switch sectionLayoutKind {
-//            case .addressPicker: return generateAddressPickerLayout()
-//            case .nearbyCities: return self.generateSharedlbumsLayout()
-//            case .ads: return self.generateMyAlbumsLayout(isWide: isWideView)
-//            }
+            let sectionLayoutKind = CityListViewModel.SectionType.allCases[sectionIndex]
+            switch sectionLayoutKind {
+            case .addressPicker: return self.generateAddressPickerLayout()
+            case .nearbyCities: return self.generateCitiesLayout()
+            case .ads: fatalError()
+            }
         }
     }
     
@@ -117,13 +135,47 @@ final class CityListViewController: UIViewController {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(1)
+            heightDimension: .fractionalWidth(1/4)
         )
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 1)
         
         let section = NSCollectionLayoutSection(group: group)
         
         return section
+    }
+    
+    private func generateCitiesLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalWidth(2/3))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.475),
+            heightDimension: .fractionalWidth(1/3)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 1)
+        group.contentInsets = NSDirectionalEdgeInsets(
+            top: 5,
+            leading: 5,
+            bottom: 5,
+            trailing: 5)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        return section
+    }
+    
+    // MARK: - Private Methods
+    
+    private func bindViewModel() {
+        viewModel.$sections
+            .sink { [weak self] sections in
+                self?.collectionViewDataSource.sections = sections
+                self?.collectionView.reloadData()
+            }
+            .store(in: &subscriptions)
     }
     
 }

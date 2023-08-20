@@ -11,9 +11,12 @@ final class CityListCollectionviewDataSource: NSObject, UICollectionViewDataSour
     
     var sections: [CityListViewModel.Section] = []
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        sections.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         sections[section].items.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -29,8 +32,15 @@ final class CityListCollectionviewDataSource: NSObject, UICollectionViewDataSour
             (cell as? CityListAddressPickerCollectionViewCell)?.subtitle = "Tap here to select an address"
 
             return cell
-        case .city:
-            return UICollectionViewCell()
+        case .city(let city):
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CityListCityCollectionViewCell.reuseIdentifer,
+                for: indexPath
+            )
+            (cell as? CityListCityCollectionViewCell)?.cityImageURLString = city.channelInfo.images.small
+            (cell as? CityListCityCollectionViewCell)?.cityName = city.channelInfo.title.uppercased()
+            
+            return cell
         case .ads:
             return UICollectionViewCell()
         }

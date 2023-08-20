@@ -9,6 +9,17 @@ import UIKit
 
 struct RootCoordinator {
     
+    struct Dependencies {
+        private static let httpProvider: HTTPProvider = URLSessionHTTPProvider(
+            baseURL: "https://dev-9r45b2epb810w4g.api.raw-labs.com",
+            urlSession: URLSession(configuration: .ephemeral)
+        )
+        
+        private static let cityListRepository: CityListRepositoryProtocol = CityListRepository(httpProvider: httpProvider)
+        
+        static let fetchCitiesUseCase: FetchCitiesUseCaseProtocol = FetchCitiesUseCase(citiesRepository: cityListRepository)
+    }
+    
     private let window: UIWindow
     
     init(window: UIWindow) {
@@ -50,7 +61,10 @@ struct RootCoordinator {
     }
     
     private func makeCityListViewController() -> UIViewController {
-        let controller = UINavigationController(rootViewController: CityListViewController())
+        let cityListViewModel = CityListViewModel(fetchCitiesUseCase: Dependencies.fetchCitiesUseCase)
+        let cityListViewController = CityListViewController(viewModel: cityListViewModel)
+        let controller = UINavigationController(rootViewController: cityListViewController)
+        
         controller.tabBarItem = UITabBarItem(
             title: "DeinDeal",
             image: UIImage(named: "tab-cities"),
