@@ -25,6 +25,8 @@ final class CityListCollectionviewDataSource: NSObject, UICollectionViewDataSour
                 withReuseIdentifier: CityListAddressPickerCollectionViewCell.reuseIdentifer,
                 for: indexPath
             )
+            (cell as? CityListAddressPickerCollectionViewCell)?.title = "Hungry? We deliver!"
+            (cell as? CityListAddressPickerCollectionViewCell)?.subtitle = "Tap here to select an address"
 
             return cell
         case .city:

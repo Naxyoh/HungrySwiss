@@ -57,7 +57,6 @@ final class CityListViewController: UIViewController {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: Spacing.xs),
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -Spacing.s),
         ])
         
