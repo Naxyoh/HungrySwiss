@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		FC52DBB42A91677100E7C980 /* Spacings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBB32A91677100E7C980 /* Spacings.swift */; };
+		FC52DBB72A91748E00E7C980 /* CityListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBB62A91748E00E7C980 /* CityListCollectionView.swift */; };
+		FC52DBB92A91767900E7C980 /* CityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBB82A91767900E7C980 /* CityListViewModel.swift */; };
+		FC52DBBB2A917D7900E7C980 /* CityListCollectionviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBBA2A917D7900E7C980 /* CityListCollectionviewDataSource.swift */; };
+		FC52DBBE2A91807100E7C980 /* CityListAddressPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBBD2A91807100E7C980 /* CityListAddressPickerCollectionViewCell.swift */; };
 		FC67C2F22A8E5C3D00FFC53C /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */; };
 		FC67C2F42A8E5D5400FFC53C /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */; };
 		FC67C2F62A8E5E3C00FFC53C /* HTTPProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */; };
@@ -45,6 +49,10 @@
 
 /* Begin PBXFileReference section */
 		FC52DBB32A91677100E7C980 /* Spacings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacings.swift; sourceTree = "<group>"; };
+		FC52DBB62A91748E00E7C980 /* CityListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCollectionView.swift; sourceTree = "<group>"; };
+		FC52DBB82A91767900E7C980 /* CityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
+		FC52DBBA2A917D7900E7C980 /* CityListCollectionviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCollectionviewDataSource.swift; sourceTree = "<group>"; };
+		FC52DBBD2A91807100E7C980 /* CityListAddressPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListAddressPickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
 		FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPProvider.swift; sourceTree = "<group>"; };
@@ -92,6 +100,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC52DBB52A91740B00E7C980 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBBC2A91805400E7C980 /* Cells */,
+				FC52DBB62A91748E00E7C980 /* CityListCollectionView.swift */,
+				FC52DBBA2A917D7900E7C980 /* CityListCollectionviewDataSource.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FC52DBBC2A91805400E7C980 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBBD2A91807100E7C980 /* CityListAddressPickerCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		FC67C2EF2A8E5BD800FFC53C /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,7 +169,9 @@
 		FC67C2FE2A8E700200FFC53C /* CityList */ = {
 			isa = PBXGroup;
 			children = (
+				FC52DBB52A91740B00E7C980 /* Components */,
 				FC67C3012A8E704F00FFC53C /* CityListViewController.swift */,
+				FC52DBB82A91767900E7C980 /* CityListViewModel.swift */,
 			);
 			path = CityList;
 			sourceTree = "<group>";
@@ -346,12 +374,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC67C2F62A8E5E3C00FFC53C /* HTTPProvider.swift in Sources */,
+				FC52DBB92A91767900E7C980 /* CityListViewModel.swift in Sources */,
 				FC52DBB42A91677100E7C980 /* Spacings.swift in Sources */,
 				FC67C3082A8F585300FFC53C /* Colors.swift in Sources */,
 				FC67C2F22A8E5C3D00FFC53C /* HTTPRequest.swift in Sources */,
 				FC67C2F42A8E5D5400FFC53C /* HTTPResponse.swift in Sources */,
 				FC67C3022A8E704F00FFC53C /* CityListViewController.swift in Sources */,
+				FC52DBB72A91748E00E7C980 /* CityListCollectionView.swift in Sources */,
+				FC52DBBE2A91807100E7C980 /* CityListAddressPickerCollectionViewCell.swift in Sources */,
 				FC67C3042A8E705800FFC53C /* OrdersViewController.swift in Sources */,
+				FC52DBBB2A917D7900E7C980 /* CityListCollectionviewDataSource.swift in Sources */,
 				FC67C2F82A8E5F2800FFC53C /* URLSessionHTTPProvider.swift in Sources */,
 				FC67C3062A8E706200FFC53C /* AccountViewController.swift in Sources */,
 				FCA34DFA2A8E59A3002FBE37 /* AppDelegate.swift in Sources */,
