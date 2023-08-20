@@ -31,13 +31,18 @@ final class CityListViewModel {
     // MARK: - Private Properties
     
     private let fetchCitiesUseCase: FetchCitiesUseCaseProtocol
+    private let cityListCoordinator: CityListCoordinator
     
     // MARK: - Public Properties
     
     @Published var sections: [Section] = []
     
-    init(fetchCitiesUseCase: FetchCitiesUseCaseProtocol) {
+    init(
+        fetchCitiesUseCase: FetchCitiesUseCaseProtocol,
+        cityListCoordinator: CityListCoordinator
+    ) {
         self.fetchCitiesUseCase = fetchCitiesUseCase
+        self.cityListCoordinator = cityListCoordinator
     }
     
     // MARK: - Public Methods
@@ -57,12 +62,11 @@ final class CityListViewModel {
             } catch {
                 print(error)
             }
-            
         }
     }
     
     func navigateToCityRestaurant(cityID: String) {
-        print(cityID)
+        cityListCoordinator.navigateToCityRestaurants(cityID: cityID)
     }
     
 }

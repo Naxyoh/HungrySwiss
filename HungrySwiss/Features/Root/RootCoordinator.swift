@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CityListCoordinator {
+    func navigateToCityRestaurants(cityID: String)
+}
+
 struct RootCoordinator {
     
     struct Dependencies {
@@ -61,7 +65,10 @@ struct RootCoordinator {
     }
     
     private func makeCityListViewController() -> UIViewController {
-        let cityListViewModel = CityListViewModel(fetchCitiesUseCase: Dependencies.fetchCitiesUseCase)
+        let cityListViewModel = CityListViewModel(
+            fetchCitiesUseCase: Dependencies.fetchCitiesUseCase,
+            cityListCoordinator: self
+        )
         let cityListViewController = CityListViewController(viewModel: cityListViewModel)
         let controller = UINavigationController(rootViewController: cityListViewController)
         
@@ -96,4 +103,10 @@ struct RootCoordinator {
         return controller
     }
     
+}
+
+extension RootCoordinator: CityListCoordinator {
+    func navigateToCityRestaurants(cityID: String) {
+        
+    }
 }
