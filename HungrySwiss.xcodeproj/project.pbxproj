@@ -27,6 +27,11 @@
 		FC52DBE12A92E6B600E7C980 /* FetchCityRestaurantsHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBE02A92E6B600E7C980 /* FetchCityRestaurantsHTTPRequest.swift */; };
 		FC52DBE32A92E74100E7C980 /* CityDetailsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBE22A92E74100E7C980 /* CityDetailsRepository.swift */; };
 		FC52DBE62A92E7C500E7C980 /* FetchCityRestaurantsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBE52A92E7C500E7C980 /* FetchCityRestaurantsUseCase.swift */; };
+		FC52DBE92A92EC8900E7C980 /* CityDetailsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBE82A92EC8900E7C980 /* CityDetailsCollectionViewLayout.swift */; };
+		FC52DBEB2A92EE1200E7C980 /* CityDetailsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBEA2A92EE1200E7C980 /* CityDetailsCollectionViewDataSource.swift */; };
+		FC52DBEE2A92EFAA00E7C980 /* CityDetailsThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBED2A92EFAA00E7C980 /* CityDetailsThemeCollectionViewCell.swift */; };
+		FC52DBF02A92F20400E7C980 /* CityDetailsRestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBEF2A92F20400E7C980 /* CityDetailsRestaurantCollectionViewCell.swift */; };
+		FC52DBF32A92FB2500E7C980 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = FC52DBF22A92FB2500E7C980 /* SDWebImageSVGCoder */; };
 		FC67C2F22A8E5C3D00FFC53C /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */; };
 		FC67C2F42A8E5D5400FFC53C /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */; };
 		FC67C2F62A8E5E3C00FFC53C /* HTTPProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */; };
@@ -82,6 +87,10 @@
 		FC52DBE02A92E6B600E7C980 /* FetchCityRestaurantsHTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCityRestaurantsHTTPRequest.swift; sourceTree = "<group>"; };
 		FC52DBE22A92E74100E7C980 /* CityDetailsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsRepository.swift; sourceTree = "<group>"; };
 		FC52DBE52A92E7C500E7C980 /* FetchCityRestaurantsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCityRestaurantsUseCase.swift; sourceTree = "<group>"; };
+		FC52DBE82A92EC8900E7C980 /* CityDetailsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsCollectionViewLayout.swift; sourceTree = "<group>"; };
+		FC52DBEA2A92EE1200E7C980 /* CityDetailsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		FC52DBED2A92EFAA00E7C980 /* CityDetailsThemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsThemeCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC52DBEF2A92F20400E7C980 /* CityDetailsRestaurantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsRestaurantCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
 		FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPProvider.swift; sourceTree = "<group>"; };
@@ -110,6 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC52DBCF2A92A81D00E7C980 /* SDWebImage in Frameworks */,
+				FC52DBF32A92FB2500E7C980 /* SDWebImageSVGCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +199,7 @@
 		FC52DBD62A92E12300E7C980 /* CityDetails */ = {
 			isa = PBXGroup;
 			children = (
+				FC52DBE72A92EC7300E7C980 /* Components */,
 				FC52DBE42A92E7A900E7C980 /* UseCases */,
 				FC52DBDB2A92E41700E7C980 /* Network */,
 				FC52DBD72A92E13F00E7C980 /* CityDetailsViewController.swift */,
@@ -229,6 +240,25 @@
 				FC52DBE52A92E7C500E7C980 /* FetchCityRestaurantsUseCase.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		FC52DBE72A92EC7300E7C980 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBEC2A92EF9A00E7C980 /* Cells */,
+				FC52DBE82A92EC8900E7C980 /* CityDetailsCollectionViewLayout.swift */,
+				FC52DBEA2A92EE1200E7C980 /* CityDetailsCollectionViewDataSource.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FC52DBEC2A92EF9A00E7C980 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBED2A92EFAA00E7C980 /* CityDetailsThemeCollectionViewCell.swift */,
+				FC52DBEF2A92F20400E7C980 /* CityDetailsRestaurantCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		FC67C2EF2A8E5BD800FFC53C /* Core */ = {
@@ -377,6 +407,7 @@
 			name = HungrySwiss;
 			packageProductDependencies = (
 				FC52DBCE2A92A81D00E7C980 /* SDWebImage */,
+				FC52DBF22A92FB2500E7C980 /* SDWebImageSVGCoder */,
 			);
 			productName = HungrySwiss;
 			productReference = FCA34DF62A8E59A3002FBE37 /* HungrySwiss.app */;
@@ -452,6 +483,7 @@
 			mainGroup = FCA34DED2A8E59A3002FBE37;
 			packageReferences = (
 				FC52DBCD2A92A81D00E7C980 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				FC52DBF12A92FB2500E7C980 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */,
 			);
 			productRefGroup = FCA34DF72A8E59A3002FBE37 /* Products */;
 			projectDirPath = "";
@@ -500,6 +532,7 @@
 				FC52DBB42A91677100E7C980 /* Spacings.swift in Sources */,
 				FC67C3082A8F585300FFC53C /* Colors.swift in Sources */,
 				FC67C2F22A8E5C3D00FFC53C /* HTTPRequest.swift in Sources */,
+				FC52DBEE2A92EFAA00E7C980 /* CityDetailsThemeCollectionViewCell.swift in Sources */,
 				FC52DBE32A92E74100E7C980 /* CityDetailsRepository.swift in Sources */,
 				FC67C2F42A8E5D5400FFC53C /* HTTPResponse.swift in Sources */,
 				FC67C3022A8E704F00FFC53C /* CityListViewController.swift in Sources */,
@@ -516,12 +549,15 @@
 				FC52DBE12A92E6B600E7C980 /* FetchCityRestaurantsHTTPRequest.swift in Sources */,
 				FCA34DFA2A8E59A3002FBE37 /* AppDelegate.swift in Sources */,
 				FC52DBCA2A928E0100E7C980 /* FetchCitiesResponseDTO.swift in Sources */,
+				FC52DBEB2A92EE1200E7C980 /* CityDetailsCollectionViewDataSource.swift in Sources */,
 				FC52DBDA2A92E14B00E7C980 /* CityDetailsViewModel.swift in Sources */,
 				FC52DBD32A92CE0600E7C980 /* CityListAdsCollectionViewCell.swift in Sources */,
 				FCA34DFC2A8E59A3002FBE37 /* SceneDelegate.swift in Sources */,
 				FC67C2FD2A8E6F7600FFC53C /* RootCoordinator.swift in Sources */,
+				FC52DBF02A92F20400E7C980 /* CityDetailsRestaurantCollectionViewCell.swift in Sources */,
 				FC52DBC42A92817000E7C980 /* FetchCitiesHTTPRequest.swift in Sources */,
 				FC52DBD82A92E13F00E7C980 /* CityDetailsViewController.swift in Sources */,
+				FC52DBE92A92EC8900E7C980 /* CityDetailsCollectionViewLayout.swift in Sources */,
 				FC52DBD52A92D5EC00E7C980 /* CityListCollectionViewDelegate.swift in Sources */,
 				FC52DBDF2A92E45000E7C980 /* FetchCityRestaurantsResponseDTO.swift in Sources */,
 				FC52DBD12A92C5E500E7C980 /* CityListCollectionViewLayout.swift in Sources */,
@@ -866,6 +902,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		FC52DBF12A92FB2500E7C980 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -873,6 +917,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FC52DBCD2A92A81D00E7C980 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		FC52DBF22A92FB2500E7C980 /* SDWebImageSVGCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC52DBF12A92FB2500E7C980 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */;
+			productName = SDWebImageSVGCoder;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

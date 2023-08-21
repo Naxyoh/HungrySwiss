@@ -16,7 +16,7 @@ struct FetchCityRestaurantsResponseDTO: Decodable {
 }
 
 struct RestaurantDTO: Decodable {
-    let id: String
+    let id: Int
     let title: String
     let subtitle: String
     let openingHours: [String]

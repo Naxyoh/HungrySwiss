@@ -13,7 +13,7 @@ struct FetchCityRestaurantsHTTPRequest: HTTPRequest {
     }
     
     var path: String {
-        "/city/\(cityID)"
+        "/cities/\(cityID)"
     }
     
     var queryParameters: [String : String] {

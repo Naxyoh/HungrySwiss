@@ -74,6 +74,12 @@ struct RootCoordinator {
         let cityListViewController = CityListViewController(viewModel: cityListViewModel)
         let controller = UINavigationController(rootViewController: cityListViewController)
         
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        
+        controller.navigationBar.standardAppearance = appearance
+        controller.navigationBar.scrollEdgeAppearance = appearance
+        
         controller.tabBarItem = UITabBarItem(
             title: "DeinDeal",
             image: UIImage(named: "tab-cities"),

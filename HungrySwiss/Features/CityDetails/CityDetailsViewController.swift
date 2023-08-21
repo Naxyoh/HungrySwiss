@@ -6,12 +6,21 @@
 //
 
 import UIKit
+import Combine
 
 final class CityDetailsViewController: UIViewController {
+    
+    // MARK: - UI Properties
+    
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     // MARK: Private Properties
     
     private let viewModel: CityDetailsViewModel
+    
+    private let collectionViewDataSource = CityDetailsCollectionViewDataSource()
+    
+    private var subscriptions = Set<AnyCancellable>()
     
     // MARK: - Initialization Methods
     
@@ -30,10 +39,62 @@ final class CityDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        configureView()
+        bindViewModel()
         
+        viewModel.fetchCities()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    // MARK: - View Configuration
+    
+    private func configureView() {
+        configureNavigationBar()
+        configureCollectionView()
+    }
+    
+    private func configureNavigationBar() {
         navigationItem.title = viewModel.cityName
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: nil, action: nil)
+    }
+    
+    private func configureCollectionView() {
+        collectionView.register(CityListAddressPickerCollectionViewCell.self, forCellWithReuseIdentifier: CityListAddressPickerCollectionViewCell.reuseIdentifer)
+        collectionView.register(CityDetailsThemeCollectionViewCell.self, forCellWithReuseIdentifier: CityDetailsThemeCollectionViewCell.reuseIdentifer)
+        collectionView.register(CityDetailsRestaurantCollectionViewCell.self, forCellWithReuseIdentifier: CityDetailsRestaurantCollectionViewCell.reuseIdentifer)
+        
+        collectionView.dataSource = collectionViewDataSource
+        
+//        collectionView.delegate = collectionViewDelegate
+//        collectionViewDelegate.didSelectCity = { [weak self] city in
+//            self?.viewModel.navigateToCityRestaurant(city: city)
+//        }
+        
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+    }
+    
+    // MARK: - Private Methods
+    
+    private func bindViewModel() {
+        viewModel.$sections
+            .sink { [weak self] sections in
+                self?.collectionViewDataSource.sections = sections
+//                self?.collectionViewDelegate.sections = sections
+                self?.collectionView.reloadData()
+            }
+            .store(in: &subscriptions)
     }
     
 }
