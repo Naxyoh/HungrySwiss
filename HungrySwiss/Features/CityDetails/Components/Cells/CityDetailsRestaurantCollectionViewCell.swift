@@ -70,7 +70,7 @@ final class CityDetailsRestaurantCollectionViewCell: UICollectionViewCell {
     // MARK: - Private Methods
     
     private func configureView() {
-        coverImageView.contentMode = .scaleAspectFill
+        coverImageView.contentMode = .scaleAspectFit
         
         addSubview(coverImageView)
         coverImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -85,37 +85,46 @@ final class CityDetailsRestaurantCollectionViewCell: UICollectionViewCell {
             restaurantSubtitleLabel,
         ])
         restaurantTitleStackView.axis = .vertical
+        restaurantTitleStackView.distribution = .fillEqually
+        restaurantTitleStackView.spacing = 4
         
-        restaurantSubtitleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        restaurantSubtitleLabel.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        
+        let availabilityLabelContainer = UIView()
+        availabilityLabelContainer.addSubview(availabilityLabel)
+        availabilityLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            availabilityLabel.leadingAnchor.constraint(equalTo: availabilityLabelContainer.leadingAnchor),
+            availabilityLabel.trailingAnchor.constraint(equalTo: availabilityLabelContainer.trailingAnchor),
+            availabilityLabel.centerYAnchor.constraint(equalTo: availabilityLabelContainer.centerYAnchor)
+        ])
         
         let bottomStackView = UIStackView(arrangedSubviews: [
             restaurantTitleStackView,
-            availabilityLabel
+            availabilityLabelContainer
         ])
         
         bottomStackView.axis = .horizontal
         
         availabilityLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        availabilityLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
         
         addSubview(bottomStackView)
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             bottomStackView.topAnchor.constraint(equalTo: coverImageView.bottomAnchor, constant: Spacing.s),
-            bottomStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            bottomStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bottomStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.xs),
+            bottomStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.xs),
             bottomStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
         
-        restaurantLabel.font = .systemFont(ofSize: 12)
-        restaurantLabel.textColor = .white
-        
-        restaurantLabel.font = .systemFont(ofSize: 11)
-        restaurantLabel.textColor = .white
+        restaurantLabel.font = .systemFont(ofSize: 14)
+        restaurantSubtitleLabel.font = .systemFont(ofSize: 12)
     }
     
     private func updateAvailabilityLabel() {
         availabilityLabel.text = isRestaurantOpen ? "Opened" : "Closed"
-        availabilityLabel.textColor = isRestaurantOpen ? .green : .red1
+        availabilityLabel.textColor = isRestaurantOpen ? .green1 : .red1
     }
     
 }

@@ -41,7 +41,7 @@ final class CityDetailsCollectionViewDataSource: NSObject, UICollectionViewDataS
             (cell as? CityDetailsThemeCollectionViewCell)?.themeTitle = theme.label
             
             return cell
-        case .restaurant(let restaurant):
+        case .restaurant(let restaurant, let isOpened):
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: CityDetailsRestaurantCollectionViewCell.reuseIdentifer,
                 for: indexPath
@@ -51,6 +51,7 @@ final class CityDetailsCollectionViewDataSource: NSObject, UICollectionViewDataS
                 restaurantCell.coverImageURLString = restaurant.images.cover
                 restaurantCell.restaurantTitle = restaurant.title
                 restaurantCell.restaurantSubtitle = restaurant.subtitle
+                restaurantCell.isRestaurantOpen = isOpened
             }
             
             return cell
