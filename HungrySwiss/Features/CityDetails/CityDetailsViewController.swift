@@ -12,7 +12,7 @@ final class CityDetailsViewController: UIViewController {
     
     // MARK: - UI Properties
     
-    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: CityDetailsCollectionViewLayout())
     
     // MARK: Private Properties
     
