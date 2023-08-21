@@ -35,6 +35,8 @@ final class CityDetailsViewModel {
     
     @Published var sections = [Section]()
     
+    var currentFilter: FacetCategoryDTO?
+    
     // MARK: - Private Properties
     
     private let fetchCityRestaurantsUseCase: FetchCityRestaurantsUseCaseProtocol
@@ -42,7 +44,6 @@ final class CityDetailsViewModel {
     private let city: CityDTO
     
     private var exhaustiveRestaurants: [RestaurantDTO] = []
-    private var currentFilter: FacetCategoryDTO?
     
     // MARK: - Initialization Methods
     
@@ -83,7 +84,7 @@ final class CityDetailsViewModel {
     
     func filterRestaurants(by filter: FacetCategoryDTO) {
         let isFilterActive = filter.id != currentFilter?.id
-        currentFilter = filter
+        currentFilter = isFilterActive ? filter : nil
         
         let filteredRestaurants = exhaustiveRestaurants
             .filter { restaurant in

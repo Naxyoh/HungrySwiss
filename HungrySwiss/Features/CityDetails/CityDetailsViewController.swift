@@ -77,6 +77,8 @@ final class CityDetailsViewController: UIViewController {
             self?.viewModel.filterRestaurants(by: filter)
         }
         
+        collectionView.allowsMultipleSelection = false
+        
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

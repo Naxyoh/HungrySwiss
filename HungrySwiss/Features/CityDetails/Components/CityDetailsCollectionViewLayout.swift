@@ -11,7 +11,6 @@ final class CityDetailsCollectionViewLayout: UICollectionViewCompositionalLayout
     
     init() {
         super.init { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            
             let sectionLayoutKind = CityDetailsViewModel.SectionType.allCases[sectionIndex]
             switch sectionLayoutKind {
             case .addressPicker: return Self.generateAddressPickerLayout()

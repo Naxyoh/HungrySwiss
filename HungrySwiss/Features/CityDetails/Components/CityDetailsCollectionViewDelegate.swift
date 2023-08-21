@@ -26,6 +26,8 @@ final class CityDetailsCollectionViewDelegate: NSObject, UICollectionViewDelegat
         }
         
         didSelectFilter?(filter)
+        
+        datasource.activeFilter = (datasource.activeFilter?.id == filter.id) ? nil : filter
     }
     
 }

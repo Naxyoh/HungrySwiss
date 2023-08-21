@@ -10,6 +10,7 @@ import UIKit
 final class CityDetailsCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     var sections: [CityDetailsViewModel.Section] = []
+    var activeFilter: FacetCategoryDTO?
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         sections.count
@@ -37,8 +38,12 @@ final class CityDetailsCollectionViewDataSource: NSObject, UICollectionViewDataS
                 withReuseIdentifier: CityDetailsThemeCollectionViewCell.reuseIdentifer,
                 for: indexPath
             )
-            (cell as? CityDetailsThemeCollectionViewCell)?.themeImageURLString = theme.icon
-            (cell as? CityDetailsThemeCollectionViewCell)?.themeTitle = theme.label
+            if let themeCell = cell as? CityDetailsThemeCollectionViewCell {
+                themeCell.themeImageURLString = theme.icon
+                themeCell.themeTitle = theme.label
+                themeCell.isActive = (theme.id == activeFilter?.id)
+                themeCell.hightlightView.layer.cornerRadius = themeCell.hightlightView.frame.width / 2
+            }
             
             return cell
         case .restaurant(let restaurant, let isOpened):

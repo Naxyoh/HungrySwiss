@@ -17,6 +17,8 @@ final class CityDetailsThemeCollectionViewCell: UICollectionViewCell {
     private let themeImageView = UIImageView()
     private let themeLabel = UILabel()
     
+    let hightlightView = UIView()
+    
     // MARK: - Public Properties
     
     var themeImageURLString: String? {
@@ -30,6 +32,13 @@ final class CityDetailsThemeCollectionViewCell: UICollectionViewCell {
     var themeTitle: String? {
         didSet {
             themeLabel.text = themeTitle
+        }
+    }
+    
+    var isActive = false {
+        didSet {
+            themeLabel.textColor = isActive ? .red1 : .gray1
+            hightlightView.isHidden = isActive == false
         }
     }
     
@@ -61,7 +70,7 @@ final class CityDetailsThemeCollectionViewCell: UICollectionViewCell {
         addSubview(themeLabel)
         themeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            themeLabel.topAnchor.constraint(equalTo: themeImageView.bottomAnchor, constant: Spacing.xs),
+            themeLabel.topAnchor.constraint(equalTo: themeImageView.bottomAnchor, constant: Spacing.s),
             themeLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
             themeLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             themeLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
@@ -69,8 +78,23 @@ final class CityDetailsThemeCollectionViewCell: UICollectionViewCell {
         ])
         
         themeLabel.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
-        themeLabel.font = .systemFont(ofSize: 12)
+        themeLabel.font = .systemFont(ofSize: 14)
         themeLabel.textColor = .gray1
+        
+        addSubview(hightlightView)
+        hightlightView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            hightlightView.centerXAnchor.constraint(equalTo: themeImageView.centerXAnchor),
+            hightlightView.centerYAnchor.constraint(equalTo: themeImageView.centerYAnchor),
+            hightlightView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
+            hightlightView.heightAnchor.constraint(equalTo: hightlightView.widthAnchor),
+        ])
+        
+        hightlightView.clipsToBounds = true
+        sendSubviewToBack(hightlightView)
+        
+        hightlightView.backgroundColor = .red1
+        hightlightView.isHidden = true
     }
     
 }
