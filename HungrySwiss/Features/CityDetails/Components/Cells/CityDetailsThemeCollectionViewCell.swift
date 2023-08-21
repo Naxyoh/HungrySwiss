@@ -48,6 +48,7 @@ final class CityDetailsThemeCollectionViewCell: UICollectionViewCell {
     
     private func configureView() {
         themeImageView.contentMode = .scaleAspectFit
+        themeImageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         
         addSubview(themeImageView)
         themeImageView.translatesAutoresizingMaskIntoConstraints = false
