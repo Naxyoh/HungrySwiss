@@ -9,7 +9,8 @@ import UIKit
 
 final class CityDetailsCollectionViewDelegate: NSObject, UICollectionViewDelegate {
     
-    var didSelectFilter: ((FacetCategoryDTO) -> ())?
+    var didSelectFilter: ((FacetCategoryDTO) -> Void)?
+    var didSelectAddressPicker: (() -> Void)?
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let datasource = collectionView.dataSource as? CityDetailsCollectionViewDataSource else {
@@ -17,17 +18,21 @@ final class CityDetailsCollectionViewDelegate: NSObject, UICollectionViewDelegat
         }
         
         let section = datasource.sections[indexPath.section]
-        guard case .theme = section.sectionType else {
+        
+        switch section.sectionType {
+        case .theme:
+            guard case .theme(let filter) = section.items[indexPath.row] else {
+                return
+            }
+            
+            didSelectFilter?(filter)
+            
+            datasource.activeFilter = (datasource.activeFilter?.id == filter.id) ? nil : filter
+        case .addressPicker:
+            didSelectAddressPicker?()
+        case .restaurant:
             return
         }
-        
-        guard case .theme(let filter) = section.items[indexPath.row] else {
-            return
-        }
-        
-        didSelectFilter?(filter)
-        
-        datasource.activeFilter = (datasource.activeFilter?.id == filter.id) ? nil : filter
     }
     
 }

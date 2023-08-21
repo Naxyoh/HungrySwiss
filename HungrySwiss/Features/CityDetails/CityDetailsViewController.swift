@@ -14,6 +14,8 @@ final class CityDetailsViewController: UIViewController {
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: CityDetailsCollectionViewLayout())
     
+    private let backgroundView = CityDetailsEmptyView()
+    
     // MARK: Private Properties
     
     private let viewModel: CityDetailsViewModel
@@ -60,7 +62,6 @@ final class CityDetailsViewController: UIViewController {
     }
     
     private func configureNavigationBar() {
-        navigationItem.title = viewModel.cityName
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem?.tintColor = .gray1
     }
@@ -76,9 +77,10 @@ final class CityDetailsViewController: UIViewController {
         collectionViewDelegate.didSelectFilter = { [weak self] filter in
             self?.viewModel.filterRestaurants(by: filter)
         }
+        collectionViewDelegate.didSelectAddressPicker = { [weak self] in
+            self?.displayCityList()
+        }
         
-        let backgroundView = CityDetailsEmptyView()
-        backgroundView.cityName = viewModel.cityName
         collectionView.backgroundView = backgroundView
         
         view.addSubview(collectionView)
@@ -95,12 +97,38 @@ final class CityDetailsViewController: UIViewController {
     
     private func bindViewModel() {
         viewModel.$sections
+            .dropFirst()
             .sink { [weak self] sections in
+                self?.navigationItem.title = self?.viewModel.cityName
+                
                 self?.collectionView.backgroundView?.isHidden = (sections.isEmpty == false)
+                self?.backgroundView.cityName = self?.viewModel.cityName
+                
                 self?.collectionViewDataSource.sections = sections
                 self?.collectionView.reloadData()
             }
             .store(in: &subscriptions)
+    }
+    
+    private func displayCityList() {
+        let alertController = UIAlertController(
+            title: "Choose a new city",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+        
+        viewModel.availableCities.forEach { city in
+            let alertAction = UIAlertAction(title: city.channelInfo.title, style: .default) { [weak self] _ in
+                self?.viewModel.updateCity(city)
+            }
+            
+            alertController.addAction(alertAction)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true)
     }
     
 }

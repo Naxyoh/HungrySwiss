@@ -37,11 +37,13 @@ final class CityDetailsViewModel {
     
     var currentFilter: FacetCategoryDTO?
     
+    private(set) var availableCities: [CityDTO]
+    
     // MARK: - Private Properties
     
     private let fetchCityRestaurantsUseCase: FetchCityRestaurantsUseCaseProtocol
     
-    private let city: CityDTO
+    private var city: CityDTO
     
     private var exhaustiveRestaurants: [RestaurantDTO] = []
     
@@ -49,9 +51,11 @@ final class CityDetailsViewModel {
     
     init(
         city: CityDTO,
+        availableCities: [CityDTO],
         fetchCityRestaurantsUseCase: FetchCityRestaurantsUseCaseProtocol
     ) {
         self.city = city
+        self.availableCities = availableCities
         self.fetchCityRestaurantsUseCase = fetchCityRestaurantsUseCase
     }
     
@@ -71,6 +75,7 @@ final class CityDetailsViewModel {
                 
                 await MainActor.run {
                     guard restaurantItems.isEmpty == false else {
+                        self.sections = []
                         return
                     }
                     
@@ -104,6 +109,11 @@ final class CityDetailsViewModel {
                 Item.restaurant(restaurant, isOpened: self.isRestaurantOpened(restaurant))
             }
         sections[sectionIndexToInsertRestaurants] = .init(items: restaurantItems, sectionType: .restaurant)
+    }
+    
+    func updateCity(_ newCity: CityDTO) {
+        city = newCity
+        fetchRestaurants()
     }
     
     // MARK: - Private Methods

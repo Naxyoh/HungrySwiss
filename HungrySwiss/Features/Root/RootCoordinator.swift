@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CityListCoordinator {
-    func navigateToCityRestaurants(city: CityDTO)
+    func navigateToCityRestaurants(city: CityDTO, allCities: [CityDTO])
 }
 
 struct RootCoordinator {
@@ -123,9 +123,10 @@ struct RootCoordinator {
 }
 
 extension RootCoordinator: CityListCoordinator {
-    func navigateToCityRestaurants(city: CityDTO) {
+    func navigateToCityRestaurants(city: CityDTO, allCities: [CityDTO]) {
         let viewModel = CityDetailsViewModel(
             city: city,
+            availableCities: allCities,
             fetchCityRestaurantsUseCase: Dependencies.fetchCityRestaurantsUseCase
         )
         let controller = CityDetailsViewController(viewModel: viewModel)
