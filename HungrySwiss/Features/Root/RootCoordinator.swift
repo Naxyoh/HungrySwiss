@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CityListCoordinator {
-    func navigateToCityRestaurants(cityID: String)
+    func navigateToCityRestaurants(city: CityDTO)
 }
 
 struct RootCoordinator {
@@ -20,8 +20,10 @@ struct RootCoordinator {
         )
         
         private static let cityListRepository: CityListRepositoryProtocol = CityListRepository(httpProvider: httpProvider)
+        private static let cityDetailsRepository: CityDetailsRepositoryProtocol = CityDetailsRepository(httpProvider: httpProvider)
         
         static let fetchCitiesUseCase: FetchCitiesUseCaseProtocol = FetchCitiesUseCase(citiesRepository: cityListRepository)
+        static let fetchCityRestaurantsUseCase: FetchCityRestaurantsUseCaseProtocol = FetchCityRestaurantsUseCase(citiesRepository: cityDetailsRepository)
     }
     
     private let window: UIWindow
@@ -106,7 +108,15 @@ struct RootCoordinator {
 }
 
 extension RootCoordinator: CityListCoordinator {
-    func navigateToCityRestaurants(cityID: String) {
+    func navigateToCityRestaurants(city: CityDTO) {
+        let viewModel = CityDetailsViewModel(
+            city: city,
+            fetchCityRestaurantsUseCase: Dependencies.fetchCityRestaurantsUseCase
+        )
+        let controller = CityDetailsViewController(viewModel: viewModel)
         
+        let cityNavigationController = (window.rootViewController as? UITabBarController)?.viewControllers?[0] as? UINavigationController
+        
+        cityNavigationController?.pushViewController(controller, animated: true)
     }
 }

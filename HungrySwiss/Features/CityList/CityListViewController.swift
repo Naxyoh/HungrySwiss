@@ -107,8 +107,8 @@ final class CityListViewController: UIViewController {
         ]
         
         collectionView.delegate = collectionViewDelegate
-        collectionViewDelegate.didSelectCity = { [weak self] cityID in
-            self?.viewModel.navigateToCityRestaurant(cityID: cityID)
+        collectionViewDelegate.didSelectCity = { [weak self] city in
+            self?.viewModel.navigateToCityRestaurant(city: city)
         }
         
         collectionView.reloadData()

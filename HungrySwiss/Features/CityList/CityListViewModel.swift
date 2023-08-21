@@ -65,8 +65,8 @@ final class CityListViewModel {
         }
     }
     
-    func navigateToCityRestaurant(cityID: String) {
-        cityListCoordinator.navigateToCityRestaurants(cityID: cityID)
+    func navigateToCityRestaurant(city: CityDTO) {
+        cityListCoordinator.navigateToCityRestaurants(city: city)
     }
     
 }

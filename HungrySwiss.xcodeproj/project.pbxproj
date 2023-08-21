@@ -21,6 +21,12 @@
 		FC52DBD12A92C5E500E7C980 /* CityListCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBD02A92C5E500E7C980 /* CityListCollectionViewLayout.swift */; };
 		FC52DBD32A92CE0600E7C980 /* CityListAdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBD22A92CE0600E7C980 /* CityListAdsCollectionViewCell.swift */; };
 		FC52DBD52A92D5EC00E7C980 /* CityListCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBD42A92D5EC00E7C980 /* CityListCollectionViewDelegate.swift */; };
+		FC52DBD82A92E13F00E7C980 /* CityDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBD72A92E13F00E7C980 /* CityDetailsViewController.swift */; };
+		FC52DBDA2A92E14B00E7C980 /* CityDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBD92A92E14B00E7C980 /* CityDetailsViewModel.swift */; };
+		FC52DBDF2A92E45000E7C980 /* FetchCityRestaurantsResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBDE2A92E45000E7C980 /* FetchCityRestaurantsResponseDTO.swift */; };
+		FC52DBE12A92E6B600E7C980 /* FetchCityRestaurantsHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBE02A92E6B600E7C980 /* FetchCityRestaurantsHTTPRequest.swift */; };
+		FC52DBE32A92E74100E7C980 /* CityDetailsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBE22A92E74100E7C980 /* CityDetailsRepository.swift */; };
+		FC52DBE62A92E7C500E7C980 /* FetchCityRestaurantsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBE52A92E7C500E7C980 /* FetchCityRestaurantsUseCase.swift */; };
 		FC67C2F22A8E5C3D00FFC53C /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */; };
 		FC67C2F42A8E5D5400FFC53C /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */; };
 		FC67C2F62A8E5E3C00FFC53C /* HTTPProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */; };
@@ -70,6 +76,12 @@
 		FC52DBD02A92C5E500E7C980 /* CityListCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCollectionViewLayout.swift; sourceTree = "<group>"; };
 		FC52DBD22A92CE0600E7C980 /* CityListAdsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListAdsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC52DBD42A92D5EC00E7C980 /* CityListCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		FC52DBD72A92E13F00E7C980 /* CityDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewController.swift; sourceTree = "<group>"; };
+		FC52DBD92A92E14B00E7C980 /* CityDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewModel.swift; sourceTree = "<group>"; };
+		FC52DBDE2A92E45000E7C980 /* FetchCityRestaurantsResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCityRestaurantsResponseDTO.swift; sourceTree = "<group>"; };
+		FC52DBE02A92E6B600E7C980 /* FetchCityRestaurantsHTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCityRestaurantsHTTPRequest.swift; sourceTree = "<group>"; };
+		FC52DBE22A92E74100E7C980 /* CityDetailsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsRepository.swift; sourceTree = "<group>"; };
+		FC52DBE52A92E7C500E7C980 /* FetchCityRestaurantsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCityRestaurantsUseCase.swift; sourceTree = "<group>"; };
 		FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
 		FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPProvider.swift; sourceTree = "<group>"; };
@@ -174,6 +186,51 @@
 			path = DTOs;
 			sourceTree = "<group>";
 		};
+		FC52DBD62A92E12300E7C980 /* CityDetails */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBE42A92E7A900E7C980 /* UseCases */,
+				FC52DBDB2A92E41700E7C980 /* Network */,
+				FC52DBD72A92E13F00E7C980 /* CityDetailsViewController.swift */,
+				FC52DBD92A92E14B00E7C980 /* CityDetailsViewModel.swift */,
+			);
+			path = CityDetails;
+			sourceTree = "<group>";
+		};
+		FC52DBDB2A92E41700E7C980 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBDD2A92E43700E7C980 /* DTOs */,
+				FC52DBDC2A92E42100E7C980 /* Requests */,
+				FC52DBE22A92E74100E7C980 /* CityDetailsRepository.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		FC52DBDC2A92E42100E7C980 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBE02A92E6B600E7C980 /* FetchCityRestaurantsHTTPRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		FC52DBDD2A92E43700E7C980 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBDE2A92E45000E7C980 /* FetchCityRestaurantsResponseDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		FC52DBE42A92E7A900E7C980 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBE52A92E7C500E7C980 /* FetchCityRestaurantsUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		FC67C2EF2A8E5BD800FFC53C /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +263,7 @@
 		FC67C2FA2A8E656500FFC53C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				FC52DBD62A92E12300E7C980 /* CityDetails */,
 				FC67C3002A8E702A00FFC53C /* Account */,
 				FC67C2FF2A8E702000FFC53C /* Orders */,
 				FC67C2FE2A8E700200FFC53C /* CityList */,
@@ -442,24 +500,30 @@
 				FC52DBB42A91677100E7C980 /* Spacings.swift in Sources */,
 				FC67C3082A8F585300FFC53C /* Colors.swift in Sources */,
 				FC67C2F22A8E5C3D00FFC53C /* HTTPRequest.swift in Sources */,
+				FC52DBE32A92E74100E7C980 /* CityDetailsRepository.swift in Sources */,
 				FC67C2F42A8E5D5400FFC53C /* HTTPResponse.swift in Sources */,
 				FC67C3022A8E704F00FFC53C /* CityListViewController.swift in Sources */,
 				FC52DBB72A91748E00E7C980 /* CityListCollectionView.swift in Sources */,
 				FC52DBBE2A91807100E7C980 /* CityListAddressPickerCollectionViewCell.swift in Sources */,
 				FC52DBC02A927F5F00E7C980 /* CityListRepository.swift in Sources */,
 				FC67C3042A8E705800FFC53C /* OrdersViewController.swift in Sources */,
+				FC52DBE62A92E7C500E7C980 /* FetchCityRestaurantsUseCase.swift in Sources */,
 				FC52DBBB2A917D7900E7C980 /* CityListCollectionviewDataSource.swift in Sources */,
 				FC67C2F82A8E5F2800FFC53C /* URLSessionHTTPProvider.swift in Sources */,
 				FC67C3062A8E706200FFC53C /* AccountViewController.swift in Sources */,
 				FC52DBCC2A92A31900E7C980 /* CityListCityCollectionViewCell.swift in Sources */,
 				FC52DBC72A92864400E7C980 /* FetchCitiesUseCase.swift in Sources */,
+				FC52DBE12A92E6B600E7C980 /* FetchCityRestaurantsHTTPRequest.swift in Sources */,
 				FCA34DFA2A8E59A3002FBE37 /* AppDelegate.swift in Sources */,
 				FC52DBCA2A928E0100E7C980 /* FetchCitiesResponseDTO.swift in Sources */,
+				FC52DBDA2A92E14B00E7C980 /* CityDetailsViewModel.swift in Sources */,
 				FC52DBD32A92CE0600E7C980 /* CityListAdsCollectionViewCell.swift in Sources */,
 				FCA34DFC2A8E59A3002FBE37 /* SceneDelegate.swift in Sources */,
 				FC67C2FD2A8E6F7600FFC53C /* RootCoordinator.swift in Sources */,
 				FC52DBC42A92817000E7C980 /* FetchCitiesHTTPRequest.swift in Sources */,
+				FC52DBD82A92E13F00E7C980 /* CityDetailsViewController.swift in Sources */,
 				FC52DBD52A92D5EC00E7C980 /* CityListCollectionViewDelegate.swift in Sources */,
+				FC52DBDF2A92E45000E7C980 /* FetchCityRestaurantsResponseDTO.swift in Sources */,
 				FC52DBD12A92C5E500E7C980 /* CityListCollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
