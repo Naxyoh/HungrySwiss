@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CityListCoordinator {
-    func navigateToCityRestaurants(cityID: String)
+    func navigateToCityRestaurants(city: CityDTO, allCities: [CityDTO])
 }
 
 struct RootCoordinator {
@@ -20,8 +20,10 @@ struct RootCoordinator {
         )
         
         private static let cityListRepository: CityListRepositoryProtocol = CityListRepository(httpProvider: httpProvider)
+        private static let cityDetailsRepository: CityDetailsRepositoryProtocol = CityDetailsRepository(httpProvider: httpProvider)
         
         static let fetchCitiesUseCase: FetchCitiesUseCaseProtocol = FetchCitiesUseCase(citiesRepository: cityListRepository)
+        static let fetchCityRestaurantsUseCase: FetchCityRestaurantsUseCaseProtocol = FetchCityRestaurantsUseCase(citiesRepository: cityDetailsRepository)
     }
     
     private let window: UIWindow
@@ -72,6 +74,21 @@ struct RootCoordinator {
         let cityListViewController = CityListViewController(viewModel: cityListViewModel)
         let controller = UINavigationController(rootViewController: cityListViewController)
         
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        
+        let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
+        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.red1]
+
+        // Apply button appearance
+        appearance.buttonAppearance = buttonAppearance
+
+        // Apply tint to the back arrow "chevron"
+        UINavigationBar.appearance().tintColor = .red1
+        
+        controller.navigationBar.standardAppearance = appearance
+        controller.navigationBar.scrollEdgeAppearance = appearance
+        
         controller.tabBarItem = UITabBarItem(
             title: "DeinDeal",
             image: UIImage(named: "tab-cities"),
@@ -106,7 +123,16 @@ struct RootCoordinator {
 }
 
 extension RootCoordinator: CityListCoordinator {
-    func navigateToCityRestaurants(cityID: String) {
+    func navigateToCityRestaurants(city: CityDTO, allCities: [CityDTO]) {
+        let viewModel = CityDetailsViewModel(
+            city: city,
+            availableCities: allCities,
+            fetchCityRestaurantsUseCase: Dependencies.fetchCityRestaurantsUseCase
+        )
+        let controller = CityDetailsViewController(viewModel: viewModel)
         
+        let cityNavigationController = (window.rootViewController as? UITabBarController)?.viewControllers?[0] as? UINavigationController
+        
+        cityNavigationController?.pushViewController(controller, animated: true)
     }
 }

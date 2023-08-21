@@ -33,6 +33,8 @@ final class CityListViewModel {
     private let fetchCitiesUseCase: FetchCitiesUseCaseProtocol
     private let cityListCoordinator: CityListCoordinator
     
+    private var allCities = [CityDTO]()
+    
     // MARK: - Public Properties
     
     @Published var sections: [Section] = []
@@ -51,7 +53,7 @@ final class CityListViewModel {
         Task {
             do {
                 let cities = try await fetchCitiesUseCase.invoke()
-                
+                allCities = cities
                 await MainActor.run {
                     self.sections = [
                         .init(items: [.addressPicker], sectionType: .addressPicker),
@@ -65,8 +67,8 @@ final class CityListViewModel {
         }
     }
     
-    func navigateToCityRestaurant(cityID: String) {
-        cityListCoordinator.navigateToCityRestaurants(cityID: cityID)
+    func navigateToCityRestaurant(city: CityDTO) {
+        cityListCoordinator.navigateToCityRestaurants(city: city, allCities: allCities)
     }
     
 }

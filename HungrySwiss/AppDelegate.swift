@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImageSVGCoder
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        let SVGCoder = SDImageSVGCoder.shared
+        SDImageCodersManager.shared.addCoder(SVGCoder)
+        
         return true
     }
 

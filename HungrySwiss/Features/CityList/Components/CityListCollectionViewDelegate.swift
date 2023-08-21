@@ -11,7 +11,7 @@ final class CityListCollectionViewDelegate: NSObject, UICollectionViewDelegate {
     
     var sections: [CityListViewModel.Section] = []
     
-    var didSelectCity: ((String) -> ())?
+    var didSelectCity: ((CityDTO) -> ())?
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = sections[indexPath.section]
@@ -23,7 +23,7 @@ final class CityListCollectionViewDelegate: NSObject, UICollectionViewDelegate {
             return
         }
         
-        didSelectCity?(city.id)
+        didSelectCity?(city)
     }
     
 }

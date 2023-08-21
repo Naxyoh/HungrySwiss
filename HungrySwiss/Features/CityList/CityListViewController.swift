@@ -41,11 +41,17 @@ final class CityListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        
         configureView()
         bindViewModel()
         
         viewModel.fetchCities()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     // MARK: - View Configuration
@@ -107,8 +113,8 @@ final class CityListViewController: UIViewController {
         ]
         
         collectionView.delegate = collectionViewDelegate
-        collectionViewDelegate.didSelectCity = { [weak self] cityID in
-            self?.viewModel.navigateToCityRestaurant(cityID: cityID)
+        collectionViewDelegate.didSelectCity = { [weak self] city in
+            self?.viewModel.navigateToCityRestaurant(city: city)
         }
         
         collectionView.reloadData()
