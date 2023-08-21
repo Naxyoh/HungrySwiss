@@ -61,6 +61,7 @@ final class CityDetailsViewController: UIViewController {
     private func configureNavigationBar() {
         navigationItem.title = viewModel.cityName
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem?.tintColor = .gray1
     }
     
     private func configureCollectionView() {

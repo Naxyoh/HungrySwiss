@@ -77,6 +77,15 @@ struct RootCoordinator {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         
+        let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
+        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.red1]
+
+        // Apply button appearance
+        appearance.buttonAppearance = buttonAppearance
+
+        // Apply tint to the back arrow "chevron"
+        UINavigationBar.appearance().tintColor = .red1
+        
         controller.navigationBar.standardAppearance = appearance
         controller.navigationBar.scrollEdgeAppearance = appearance
         
