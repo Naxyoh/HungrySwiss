@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC52DBB42A91677100E7C980 /* Spacings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBB32A91677100E7C980 /* Spacings.swift */; };
+		FC52DBB72A91748E00E7C980 /* CityListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBB62A91748E00E7C980 /* CityListCollectionView.swift */; };
+		FC52DBB92A91767900E7C980 /* CityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBB82A91767900E7C980 /* CityListViewModel.swift */; };
+		FC52DBBB2A917D7900E7C980 /* CityListCollectionviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBBA2A917D7900E7C980 /* CityListCollectionviewDataSource.swift */; };
+		FC52DBBE2A91807100E7C980 /* CityListAddressPickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBBD2A91807100E7C980 /* CityListAddressPickerCollectionViewCell.swift */; };
+		FC52DBC02A927F5F00E7C980 /* CityListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBBF2A927F5F00E7C980 /* CityListRepository.swift */; };
+		FC52DBC42A92817000E7C980 /* FetchCitiesHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBC32A92817000E7C980 /* FetchCitiesHTTPRequest.swift */; };
+		FC52DBC72A92864400E7C980 /* FetchCitiesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBC62A92864400E7C980 /* FetchCitiesUseCase.swift */; };
+		FC52DBCA2A928E0100E7C980 /* FetchCitiesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBC92A928E0100E7C980 /* FetchCitiesResponseDTO.swift */; };
+		FC52DBCC2A92A31900E7C980 /* CityListCityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBCB2A92A31900E7C980 /* CityListCityCollectionViewCell.swift */; };
+		FC52DBCF2A92A81D00E7C980 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = FC52DBCE2A92A81D00E7C980 /* SDWebImage */; };
+		FC52DBD12A92C5E500E7C980 /* CityListCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBD02A92C5E500E7C980 /* CityListCollectionViewLayout.swift */; };
+		FC52DBD32A92CE0600E7C980 /* CityListAdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBD22A92CE0600E7C980 /* CityListAdsCollectionViewCell.swift */; };
+		FC52DBD52A92D5EC00E7C980 /* CityListCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBD42A92D5EC00E7C980 /* CityListCollectionViewDelegate.swift */; };
 		FC67C2F22A8E5C3D00FFC53C /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */; };
 		FC67C2F42A8E5D5400FFC53C /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */; };
 		FC67C2F62A8E5E3C00FFC53C /* HTTPProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */; };
@@ -43,6 +57,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC52DBB32A91677100E7C980 /* Spacings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacings.swift; sourceTree = "<group>"; };
+		FC52DBB62A91748E00E7C980 /* CityListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCollectionView.swift; sourceTree = "<group>"; };
+		FC52DBB82A91767900E7C980 /* CityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
+		FC52DBBA2A917D7900E7C980 /* CityListCollectionviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCollectionviewDataSource.swift; sourceTree = "<group>"; };
+		FC52DBBD2A91807100E7C980 /* CityListAddressPickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListAddressPickerCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC52DBBF2A927F5F00E7C980 /* CityListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListRepository.swift; sourceTree = "<group>"; };
+		FC52DBC32A92817000E7C980 /* FetchCitiesHTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCitiesHTTPRequest.swift; sourceTree = "<group>"; };
+		FC52DBC62A92864400E7C980 /* FetchCitiesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCitiesUseCase.swift; sourceTree = "<group>"; };
+		FC52DBC92A928E0100E7C980 /* FetchCitiesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCitiesResponseDTO.swift; sourceTree = "<group>"; };
+		FC52DBCB2A92A31900E7C980 /* CityListCityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCityCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC52DBD02A92C5E500E7C980 /* CityListCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCollectionViewLayout.swift; sourceTree = "<group>"; };
+		FC52DBD22A92CE0600E7C980 /* CityListAdsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListAdsCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC52DBD42A92D5EC00E7C980 /* CityListCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
 		FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPProvider.swift; sourceTree = "<group>"; };
@@ -70,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC52DBCF2A92A81D00E7C980 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,11 +118,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC52DBB52A91740B00E7C980 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBBC2A91805400E7C980 /* Cells */,
+				FC52DBB62A91748E00E7C980 /* CityListCollectionView.swift */,
+				FC52DBBA2A917D7900E7C980 /* CityListCollectionviewDataSource.swift */,
+				FC52DBD02A92C5E500E7C980 /* CityListCollectionViewLayout.swift */,
+				FC52DBD42A92D5EC00E7C980 /* CityListCollectionViewDelegate.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FC52DBBC2A91805400E7C980 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBBD2A91807100E7C980 /* CityListAddressPickerCollectionViewCell.swift */,
+				FC52DBCB2A92A31900E7C980 /* CityListCityCollectionViewCell.swift */,
+				FC52DBD22A92CE0600E7C980 /* CityListAdsCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FC52DBC12A9280EB00E7C980 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBC82A928DEA00E7C980 /* DTOs */,
+				FC52DBC22A9280F600E7C980 /* Requests */,
+				FC52DBBF2A927F5F00E7C980 /* CityListRepository.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		FC52DBC22A9280F600E7C980 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBC32A92817000E7C980 /* FetchCitiesHTTPRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		FC52DBC52A92863400E7C980 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBC62A92864400E7C980 /* FetchCitiesUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		FC52DBC82A928DEA00E7C980 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				FC52DBC92A928E0100E7C980 /* FetchCitiesResponseDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
 		FC67C2EF2A8E5BD800FFC53C /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				FC67C2F02A8E5C2C00FFC53C /* Networking */,
 				FC67C3072A8F585300FFC53C /* Colors.swift */,
+				FC52DBB32A91677100E7C980 /* Spacings.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -140,7 +225,11 @@
 		FC67C2FE2A8E700200FFC53C /* CityList */ = {
 			isa = PBXGroup;
 			children = (
+				FC52DBC52A92863400E7C980 /* UseCases */,
+				FC52DBC12A9280EB00E7C980 /* Network */,
+				FC52DBB52A91740B00E7C980 /* Components */,
 				FC67C3012A8E704F00FFC53C /* CityListViewController.swift */,
+				FC52DBB82A91767900E7C980 /* CityListViewModel.swift */,
 			);
 			path = CityList;
 			sourceTree = "<group>";
@@ -228,6 +317,9 @@
 			dependencies = (
 			);
 			name = HungrySwiss;
+			packageProductDependencies = (
+				FC52DBCE2A92A81D00E7C980 /* SDWebImage */,
+			);
 			productName = HungrySwiss;
 			productReference = FCA34DF62A8E59A3002FBE37 /* HungrySwiss.app */;
 			productType = "com.apple.product-type.application";
@@ -300,6 +392,9 @@
 				Base,
 			);
 			mainGroup = FCA34DED2A8E59A3002FBE37;
+			packageReferences = (
+				FC52DBCD2A92A81D00E7C980 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = FCA34DF72A8E59A3002FBE37 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -343,16 +438,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC67C2F62A8E5E3C00FFC53C /* HTTPProvider.swift in Sources */,
+				FC52DBB92A91767900E7C980 /* CityListViewModel.swift in Sources */,
+				FC52DBB42A91677100E7C980 /* Spacings.swift in Sources */,
 				FC67C3082A8F585300FFC53C /* Colors.swift in Sources */,
 				FC67C2F22A8E5C3D00FFC53C /* HTTPRequest.swift in Sources */,
 				FC67C2F42A8E5D5400FFC53C /* HTTPResponse.swift in Sources */,
 				FC67C3022A8E704F00FFC53C /* CityListViewController.swift in Sources */,
+				FC52DBB72A91748E00E7C980 /* CityListCollectionView.swift in Sources */,
+				FC52DBBE2A91807100E7C980 /* CityListAddressPickerCollectionViewCell.swift in Sources */,
+				FC52DBC02A927F5F00E7C980 /* CityListRepository.swift in Sources */,
 				FC67C3042A8E705800FFC53C /* OrdersViewController.swift in Sources */,
+				FC52DBBB2A917D7900E7C980 /* CityListCollectionviewDataSource.swift in Sources */,
 				FC67C2F82A8E5F2800FFC53C /* URLSessionHTTPProvider.swift in Sources */,
 				FC67C3062A8E706200FFC53C /* AccountViewController.swift in Sources */,
+				FC52DBCC2A92A31900E7C980 /* CityListCityCollectionViewCell.swift in Sources */,
+				FC52DBC72A92864400E7C980 /* FetchCitiesUseCase.swift in Sources */,
 				FCA34DFA2A8E59A3002FBE37 /* AppDelegate.swift in Sources */,
+				FC52DBCA2A928E0100E7C980 /* FetchCitiesResponseDTO.swift in Sources */,
+				FC52DBD32A92CE0600E7C980 /* CityListAdsCollectionViewCell.swift in Sources */,
 				FCA34DFC2A8E59A3002FBE37 /* SceneDelegate.swift in Sources */,
 				FC67C2FD2A8E6F7600FFC53C /* RootCoordinator.swift in Sources */,
+				FC52DBC42A92817000E7C980 /* FetchCitiesHTTPRequest.swift in Sources */,
+				FC52DBD52A92D5EC00E7C980 /* CityListCollectionViewDelegate.swift in Sources */,
+				FC52DBD12A92C5E500E7C980 /* CityListCollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +792,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FC52DBCD2A92A81D00E7C980 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FC52DBCE2A92A81D00E7C980 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC52DBCD2A92A81D00E7C980 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FCA34DEE2A8E59A3002FBE37 /* Project object */;
 }

@@ -7,7 +7,22 @@
 
 import UIKit
 
+protocol CityListCoordinator {
+    func navigateToCityRestaurants(cityID: String)
+}
+
 struct RootCoordinator {
+    
+    struct Dependencies {
+        private static let httpProvider: HTTPProvider = URLSessionHTTPProvider(
+            baseURL: "https://dev-9r45b2epb810w4g.api.raw-labs.com",
+            urlSession: URLSession(configuration: .ephemeral)
+        )
+        
+        private static let cityListRepository: CityListRepositoryProtocol = CityListRepository(httpProvider: httpProvider)
+        
+        static let fetchCitiesUseCase: FetchCitiesUseCaseProtocol = FetchCitiesUseCase(citiesRepository: cityListRepository)
+    }
     
     private let window: UIWindow
     
@@ -50,7 +65,13 @@ struct RootCoordinator {
     }
     
     private func makeCityListViewController() -> UIViewController {
-        let controller = UINavigationController(rootViewController: CityListViewController())
+        let cityListViewModel = CityListViewModel(
+            fetchCitiesUseCase: Dependencies.fetchCitiesUseCase,
+            cityListCoordinator: self
+        )
+        let cityListViewController = CityListViewController(viewModel: cityListViewModel)
+        let controller = UINavigationController(rootViewController: cityListViewController)
+        
         controller.tabBarItem = UITabBarItem(
             title: "DeinDeal",
             image: UIImage(named: "tab-cities"),
@@ -72,7 +93,7 @@ struct RootCoordinator {
     }
     
     private func makeAccountViewController() -> UIViewController {
-        let controller = UINavigationController(rootViewController: AccountViewController())
+        let controller = AccountViewController()
         controller.tabBarItem = UITabBarItem(
             title: "Account",
             image: UIImage(named: "tab-account"),
@@ -82,4 +103,10 @@ struct RootCoordinator {
         return controller
     }
     
+}
+
+extension RootCoordinator: CityListCoordinator {
+    func navigateToCityRestaurants(cityID: String) {
+        
+    }
 }
