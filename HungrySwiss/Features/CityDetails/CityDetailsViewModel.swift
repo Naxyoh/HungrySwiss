@@ -70,6 +70,10 @@ final class CityDetailsViewModel {
                 self.exhaustiveRestaurants = response.items
                 
                 await MainActor.run {
+                    guard restaurantItems.isEmpty == false else {
+                        return
+                    }
+                    
                     self.sections = [
                         .init(items: [.addressPicker(self.city)], sectionType: .addressPicker),
                         .init(items: response.facetCategories.map(Item.theme), sectionType: .theme),

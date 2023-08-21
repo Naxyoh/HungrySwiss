@@ -77,7 +77,9 @@ final class CityDetailsViewController: UIViewController {
             self?.viewModel.filterRestaurants(by: filter)
         }
         
-        collectionView.allowsMultipleSelection = false
+        let backgroundView = CityDetailsEmptyView()
+        backgroundView.cityName = viewModel.cityName
+        collectionView.backgroundView = backgroundView
         
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -94,6 +96,7 @@ final class CityDetailsViewController: UIViewController {
     private func bindViewModel() {
         viewModel.$sections
             .sink { [weak self] sections in
+                self?.collectionView.backgroundView?.isHidden = (sections.isEmpty == false)
                 self?.collectionViewDataSource.sections = sections
                 self?.collectionView.reloadData()
             }
