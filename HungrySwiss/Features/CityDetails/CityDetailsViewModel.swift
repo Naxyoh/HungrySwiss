@@ -41,6 +41,9 @@ final class CityDetailsViewModel {
     
     private let city: CityDTO
     
+    private var exhaustiveRestaurants: [RestaurantDTO] = []
+    private var currentFilter: FacetCategoryDTO?
+    
     // MARK: - Initialization Methods
     
     init(
@@ -53,19 +56,21 @@ final class CityDetailsViewModel {
     
     // MARK: - Public Methods
     
-    func fetchCities() {
-        Task {
+    func fetchRestaurants() {
+        Task { [weak self] in
+            guard let self else { return }
+            
             do {
                 let response = try await fetchCityRestaurantsUseCase.invoke(cityID: city.id)
                 
                 let restaurantItems = response.items.map { restaurant in
-                    Item.restaurant(restaurant, isOpened: isRestaurantOpened(restaurant))
-                    
+                    Item.restaurant(restaurant, isOpened: self.isRestaurantOpened(restaurant))
                 }
+                self.exhaustiveRestaurants = response.items
                 
                 await MainActor.run {
                     self.sections = [
-                        .init(items: [.addressPicker(city)], sectionType: .addressPicker),
+                        .init(items: [.addressPicker(self.city)], sectionType: .addressPicker),
                         .init(items: response.facetCategories.map(Item.theme), sectionType: .theme),
                         .init(items: restaurantItems, sectionType: .restaurant),
                     ]
@@ -74,6 +79,26 @@ final class CityDetailsViewModel {
                 print(error)
             }
         }
+    }
+    
+    func filterRestaurants(by filter: FacetCategoryDTO) {
+        let isFilterActive = filter.id != currentFilter?.id
+        currentFilter = filter
+        
+        let filteredRestaurants = exhaustiveRestaurants
+            .filter { restaurant in
+                return restaurant.myThemes.contains(filter.id)
+            }
+        
+        guard let sectionIndexToInsertRestaurants = sections.firstIndex(where: { $0.sectionType == .restaurant }) else {
+            return
+        }
+        
+        let restaurantItems = (isFilterActive ? filteredRestaurants : exhaustiveRestaurants)
+            .map { restaurant in
+                Item.restaurant(restaurant, isOpened: self.isRestaurantOpened(restaurant))
+            }
+        sections[sectionIndexToInsertRestaurants] = .init(items: restaurantItems, sectionType: .restaurant)
     }
     
     // MARK: - Private Methods

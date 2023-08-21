@@ -19,6 +19,7 @@ final class CityDetailsViewController: UIViewController {
     private let viewModel: CityDetailsViewModel
     
     private let collectionViewDataSource = CityDetailsCollectionViewDataSource()
+    private let collectionViewDelegate = CityDetailsCollectionViewDelegate()
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -42,7 +43,7 @@ final class CityDetailsViewController: UIViewController {
         configureView()
         bindViewModel()
         
-        viewModel.fetchCities()
+        viewModel.fetchRestaurants()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,10 +72,10 @@ final class CityDetailsViewController: UIViewController {
         
         collectionView.dataSource = collectionViewDataSource
         
-//        collectionView.delegate = collectionViewDelegate
-//        collectionViewDelegate.didSelectCity = { [weak self] city in
-//            self?.viewModel.navigateToCityRestaurant(city: city)
-//        }
+        collectionView.delegate = collectionViewDelegate
+        collectionViewDelegate.didSelectFilter = { [weak self] filter in
+            self?.viewModel.filterRestaurants(by: filter)
+        }
         
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +93,6 @@ final class CityDetailsViewController: UIViewController {
         viewModel.$sections
             .sink { [weak self] sections in
                 self?.collectionViewDataSource.sections = sections
-//                self?.collectionViewDelegate.sections = sections
                 self?.collectionView.reloadData()
             }
             .store(in: &subscriptions)

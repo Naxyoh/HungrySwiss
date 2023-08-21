@@ -32,6 +32,7 @@
 		FC52DBEE2A92EFAA00E7C980 /* CityDetailsThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBED2A92EFAA00E7C980 /* CityDetailsThemeCollectionViewCell.swift */; };
 		FC52DBF02A92F20400E7C980 /* CityDetailsRestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBEF2A92F20400E7C980 /* CityDetailsRestaurantCollectionViewCell.swift */; };
 		FC52DBF32A92FB2500E7C980 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = FC52DBF22A92FB2500E7C980 /* SDWebImageSVGCoder */; };
+		FC52DBF52A93926D00E7C980 /* CityDetailsCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC52DBF42A93926D00E7C980 /* CityDetailsCollectionViewDelegate.swift */; };
 		FC67C2F22A8E5C3D00FFC53C /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */; };
 		FC67C2F42A8E5D5400FFC53C /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */; };
 		FC67C2F62A8E5E3C00FFC53C /* HTTPProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */; };
@@ -91,6 +92,7 @@
 		FC52DBEA2A92EE1200E7C980 /* CityDetailsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		FC52DBED2A92EFAA00E7C980 /* CityDetailsThemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsThemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC52DBEF2A92F20400E7C980 /* CityDetailsRestaurantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsRestaurantCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC52DBF42A93926D00E7C980 /* CityDetailsCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		FC67C2F12A8E5C3D00FFC53C /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		FC67C2F32A8E5D5300FFC53C /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
 		FC67C2F52A8E5E3C00FFC53C /* HTTPProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPProvider.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				FC52DBEC2A92EF9A00E7C980 /* Cells */,
 				FC52DBE82A92EC8900E7C980 /* CityDetailsCollectionViewLayout.swift */,
 				FC52DBEA2A92EE1200E7C980 /* CityDetailsCollectionViewDataSource.swift */,
+				FC52DBF42A93926D00E7C980 /* CityDetailsCollectionViewDelegate.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				FC52DBE12A92E6B600E7C980 /* FetchCityRestaurantsHTTPRequest.swift in Sources */,
 				FCA34DFA2A8E59A3002FBE37 /* AppDelegate.swift in Sources */,
 				FC52DBCA2A928E0100E7C980 /* FetchCitiesResponseDTO.swift in Sources */,
+				FC52DBF52A93926D00E7C980 /* CityDetailsCollectionViewDelegate.swift in Sources */,
 				FC52DBEB2A92EE1200E7C980 /* CityDetailsCollectionViewDataSource.swift in Sources */,
 				FC52DBDA2A92E14B00E7C980 /* CityDetailsViewModel.swift in Sources */,
 				FC52DBD32A92CE0600E7C980 /* CityListAdsCollectionViewCell.swift in Sources */,
