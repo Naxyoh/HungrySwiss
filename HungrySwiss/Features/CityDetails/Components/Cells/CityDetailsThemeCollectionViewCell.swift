@@ -52,9 +52,9 @@ final class CityDetailsThemeCollectionViewCell: UICollectionViewCell {
         addSubview(themeImageView)
         themeImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            themeImageView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
+            themeImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             themeImageView.topAnchor.constraint(equalTo: topAnchor),
-            themeImageView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
+            themeImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
         
         addSubview(themeLabel)
@@ -64,10 +64,12 @@ final class CityDetailsThemeCollectionViewCell: UICollectionViewCell {
             themeLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
             themeLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             themeLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
+            themeLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
         
-        themeLabel.font = .boldSystemFont(ofSize: 20)
-        themeLabel.textColor = .white
+        themeLabel.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        themeLabel.font = .systemFont(ofSize: 12)
+        themeLabel.textColor = .gray1
     }
     
 }

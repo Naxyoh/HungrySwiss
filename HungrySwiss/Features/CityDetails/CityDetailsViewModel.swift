@@ -61,8 +61,8 @@ final class CityDetailsViewModel {
                 await MainActor.run {
                     self.sections = [
                         .init(items: [.addressPicker(city)], sectionType: .addressPicker),
-//                        .init(items: response.facetCategories.map(Item.theme), sectionType: .theme),
-//                        .init(items: response.items.map(Item.restaurant), sectionType: .restaurant),
+                        .init(items: response.facetCategories.map(Item.theme), sectionType: .theme),
+                        .init(items: response.items.map(Item.restaurant), sectionType: .restaurant),
                     ]
                 }
             } catch {
